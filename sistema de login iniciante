@@ -2,15 +2,23 @@ import time
 
 nome = input("Olá novo usuário, qual seu nome?: ")
 print("olá,", nome)
-usuario = input("crie uma senha: ")
-time.sleep(2)
-usuarioB = input("digite sua senha novamente: ")
 
-if usuarioB != usuario:
-    print("senha incorreta")
+senha = input("crie uma senha: ")
 
-else:
-     usuarioB == usuario
-print("senha correta!")
+tentativas = 0
 
-
+while True:
+    usuario= input("digite sua senha para entrar: ")
+    tentativas += 1
+    
+    if usuario == senha:
+        print("senha correto")
+        print("voce acertou em,", tentativas,"tentativa(s)")
+        break
+        
+    else:
+        print("senha incorreta, tente novamente")
+        
+        if tentativas >= 3:
+            print("conta bloqueada")
+            time.sleep(1000004)
