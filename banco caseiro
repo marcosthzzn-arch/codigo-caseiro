@@ -1,0 +1,126 @@
+
+import time
+
+#valores de usuario, senha e dinheiro
+
+usuario = None
+senha = None
+dinheiro = 0.0
+
+#menu do banco
+
+while True:
+    print("====Menu Do Banco====")
+    print("1- criar conta")
+    print("2- fazer login")
+    print("3- sacar dinheiro")
+    print("4- depositar dinheiro")
+    print("5- ver saldo")
+    print("6- sair")
+    opcao = input("digite a opcao: ")
+    
+    #criar conta
+    
+    if opcao == "1":
+        usuario = input("qual seu nome?: ")
+        time.sleep(0.3)
+        
+        senha = input("crie uma senha: ")
+       
+        while True:  
+            if len(senha) == 6 and senha.isdigit():
+                print("Conta criada com sucesso")
+                break
+            
+            else:
+                print("a senha deve conter 6 digitos sendo eles numeros")
+                senha = input("crie uma senha: ")
+                
+    time.sleep(0.4)
+    
+    #login
+    
+    if opcao == "2":
+        if senha == None:
+            print("voce não tem conta, crie uma")
+        
+        else:
+            tentativa = 0
+            while tentativa < 3:
+                tentativa += 1
+                
+                senha2 = input("digite sua senha para entrar: ")
+                if senha2 == senha:
+                    print("acesso permitido")
+                    break
+                
+                else:
+                    print("senha incorreta, tente novamente")
+                    
+                    if tentativa == 3 and senha2 != senha:
+                        print("conta bloqueada")
+                        
+                        
+    time.sleep(0.5)
+ 
+ 
+ # sistema de saque de dinheiro              
+    
+    if opcao == "3":
+        if usuario == None:
+                print("entre na sua conta e crie uma se não tiver")
+        else:
+            print("sacar dinheiro💵")
+        if dinheiro == 0.0:
+            print("voce não tem dinheiro!")
+            time.sleep(0.3)
+            print("deposite dinheiro")
+        
+        else:
+            valor = float(input("qual valor deseja sacar?: "))
+            if valor <= dinheiro:
+                dinheiro -= valor
+                print("saque realizado com sucesso")
+                
+            else:
+                print("saldo insuficiente")
+  
+  
+        time.sleep(1.2)     
+     
+     
+     
+ # sistema de deposito  
+              
+    if opcao == "4":
+        if usuario != None:
+            print("crie uma conta ou faça login")
+            
+        else:
+         valor = float(input("qual quantia deseja depositar?: "))
+        dinheiro += valor
+        print("valor depositado")
+        time.sleep(0.4)
+        print("seu saldo atual é de", dinheiro)
+     
+        time.sleep(2.1)
+        
+ #sistema de ver saldo
+ 
+    elif opcao == "5":
+        if usuario == None:
+            print("entre na conta ou crie uma se não tiver")
+            
+        else:
+            print("seu saldo atual é de", dinheiro)
+            
+    time.sleep(5)
+
+    #sair do banco
+
+    if opcao == "6":
+        print("ok, saindo do banco")
+        break           
+        
+    
+        
