@@ -1,0 +1,16 @@
+import time
+
+nome = input("Olá novo usuário, qual seu nome?: ")
+print("olá,", nome)
+usuario = input("crie uma senha: ")
+time.sleep(2)
+usuarioB = input("digite sua senha novamente: ")
+
+if usuarioB != usuario:
+    print("senha incorreta")
+
+else:
+     usuarioB == usuario
+print("senha correta!")
+
+
