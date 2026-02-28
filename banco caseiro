@@ -81,6 +81,8 @@ while True:
             if valor <= dinheiro:
                 dinheiro -= valor
                 print("saque realizado com sucesso")
+                time.sleep(0.1)
+                print("saldo atual da conta é de", dinheiro)
                 
             else:
                 print("saldo insuficiente")
@@ -93,17 +95,18 @@ while True:
  # sistema de deposito  
               
     elif opcao == "4":
-            if usuario != None:
-                print("crie uma conta ou faça login")
-            
-            else:
-             valor = float(input("qual quantia deseja depositar?: "))
-             dinheiro += valor
-             print("valor depositado")
-             time.sleep(0.4)
-             print("seu saldo atual é de", dinheiro)
+             if senha == None:
+                 print("crie uma conta ou entre em uma existente para fazer o deposito")
+             
+             else:
+                 valor = float(input("qual quantia deseja depositar?: "))
+                 dinheiro += valor
+                 print("valor depositado")
+                 time.sleep(0.4)
+                 print("seu saldo atual é de", dinheiro)
       
-            time.sleep(2)
+    
+             time.sleep(2)
         
  #sistema de ver saldo
  
