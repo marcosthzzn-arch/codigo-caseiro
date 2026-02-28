@@ -36,7 +36,7 @@ while True:
                 print("a senha deve conter 6 digitos sendo eles numeros")
                 senha = input("crie uma senha: ")
                 
-    time.sleep(0.4)
+    time.sleep(0.2)
     
     #login
     
@@ -61,7 +61,7 @@ while True:
                         print("conta bloqueada")
                         
                         
-    time.sleep(0.5)
+    time.sleep(0.1)
  
  
  # sistema de saque de dinheiro              
@@ -86,24 +86,24 @@ while True:
                 print("saldo insuficiente")
   
   
-        time.sleep(1.2)     
+        time.sleep(1)     
      
      
      
  # sistema de deposito  
               
-    if opcao == "4":
-        if usuario != None:
-            print("crie uma conta ou faça login")
+    elif opcao == "4":
+            if usuario != None:
+                print("crie uma conta ou faça login")
             
-        else:
-         valor = float(input("qual quantia deseja depositar?: "))
-        dinheiro += valor
-        print("valor depositado")
-        time.sleep(0.4)
-        print("seu saldo atual é de", dinheiro)
-     
-        time.sleep(2.1)
+            else:
+             valor = float(input("qual quantia deseja depositar?: "))
+             dinheiro += valor
+             print("valor depositado")
+             time.sleep(0.4)
+             print("seu saldo atual é de", dinheiro)
+      
+            time.sleep(2)
         
  #sistema de ver saldo
  
@@ -115,9 +115,9 @@ while True:
             print("seu saldo atual é de", dinheiro)
             
     time.sleep(5)
-
-    #sair do banco
-
+    
+    # sair
+    
     if opcao == "6":
         print("ok, saindo do banco")
         break           
