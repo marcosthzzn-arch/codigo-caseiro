@@ -1,0 +1,113 @@
+import time
+
+# banco de dados (dicionário)
+contas = {}
+
+# controla quem está logado
+usuario_logado = None
+
+while True:
+    print("\n==== MENU DO BANCO ====")
+    print("1 - Criar conta")
+    print("2 - Fazer login")
+    print("3 - Sacar dinheiro")
+    print("4 - Depositar dinheiro")
+    print("5 - Ver saldo")
+    print("6 - Logout")
+    print("7 - Sair")
+
+    opcao = input("Digite a opção: ")
+
+    # CRIAR CONTA
+    if opcao == "1":
+        nome = input("Digite seu nome: ")
+
+        if nome in contas:
+            print("❌ Usuário já existe!")
+        else:
+            senha = input("Crie uma senha de 6 números: ")
+
+            while not (len(senha) == 6 and senha.isdigit()):
+                print("A senha deve conter exatamente 6 números.")
+                senha = input("Crie uma senha válida: ")
+
+            contas[nome] = {
+                "senha": senha,
+                "saldo": 0.0
+            }
+
+            print("✅ Conta criada com sucesso!")
+
+    # LOGIN
+    elif opcao == "2":
+        nome = input("Digite seu nome: ")
+
+        if nome not in contas:
+            print("❌ Usuário não encontrado.")
+        else:
+            tentativas = 0
+
+            while tentativas < 3:
+                senha = input("Digite sua senha: ")
+                tentativas += 1
+
+                if senha == contas[nome]["senha"]:
+                    usuario_logado = nome
+                    print("✅ Login realizado com sucesso!")
+                    break
+                else:
+                    print("❌ Senha incorreta.")
+
+            if tentativas == 3 and usuario_logado != nome:
+                print("🚫 Conta bloqueada temporariamente.")
+
+    # SACAR
+    elif opcao == "3":
+        if usuario_logado is None:
+            print("❌ Faça login primeiro.")
+        else:
+            valor = float(input("Digite o valor para sacar: "))
+
+            if valor > 0 and valor <= contas[usuario_logado]["saldo"]:
+                contas[usuario_logado]["saldo"] -= valor
+                print("✅ Saque realizado.")
+            else:
+                print("❌ Saldo insuficiente ou valor inválido.")
+
+    # DEPOSITAR
+    elif opcao == "4":
+        if usuario_logado is None:
+            print("❌ Faça login primeiro.")
+        else:
+            valor = float(input("Digite o valor para depositar: "))
+
+            if valor > 0:
+                contas[usuario_logado]["saldo"] += valor
+                print("✅ Depósito realizado.")
+            else:
+                print("❌ Valor inválido.")
+
+    # VER SALDO
+    elif opcao == "5":
+        if usuario_logado is None:
+            print("❌ Faça login primeiro.")
+        else:
+            print("💰 Seu saldo é:", contas[usuario_logado]["saldo"])
+
+    # LOGOUT
+    elif opcao == "6":
+        if usuario_logado is None:
+            print("Nenhum usuário está logado.")
+        else:
+            print("👋 Logout realizado.")
+            usuario_logado = None
+
+    # SAIR
+    elif opcao == "7":
+        print("Saindo do sistema...")
+        break
+
+    else:
+        print("Opção inválida.")
+
+    time.sleep(1)
