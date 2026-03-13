@@ -1,2 +1,2 @@
 # codigo-caseiro
-Um sistema de login back-end desenvolvido em casa =)
+esotu apenas aprendendo python back-end
