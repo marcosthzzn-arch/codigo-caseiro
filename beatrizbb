@@ -1,0 +1,62 @@
+import pygame
+import time
+import sys
+from colorama import Fore, Style, init
+
+
+init(autoreset=True)
+
+# iniciar música
+pygame.mixer.init()
+pygame.mixer.music.load("beatriz.mp3")
+pygame.mixer.music.play()
+
+# cores que vão mudar
+cores = [
+    Fore.RED,
+    Fore.WHITE
+]
+
+# tempo (segundos) + linha da música
+letra = [
+    (0.1, "Eu ainda penso"),
+    (1.9, "Mas você virou uma desconhecida"),
+    (2, "Que eu sei o nome, sei as feridas"),
+    (2.8, "Sei os defeitos, sei suas manias"),
+    (2.3, "Sei até qual é tua cor favorita"),
+    (1.8, "Sei que ama o Sol, sei que é de libra (sei mermo')"),
+    (2, "Sei seu perfume, sei o que te irrita (ainda)"),
+    (2, "Só não sei como a gente junto não conseguiu"),
+    (2.0, "Dar certo nessa vida"),
+    (4.0, "Mas, Beatriz, ainda penso em tu"),
+    (20.7, "Me diz se ainda pensa em mim (pensa em mim)"),
+    (9, "Eu tentei te dizer que eu não queria ir embora"),
+    (28, "Lá fora, no jogo do amor, empate sempre é vitória"),
+    (33.8, "Tu me culpa pela gente"),
+    (6, "Eu também quis que fosse diferente (também)"),
+    (7, "Era bom, pena não ser pra sempre"),
+    (8, "Tua gargalhada ainda ecoa na mente"),
+    (9, "Mermo' que eu explique, tu não entende (jamais)"),
+    (2, "Então segue tua vida primeiramente"),
+    (3, "Acabou a conversa, então vai sem pressa"),
+    (5, "Com uma bunda dessa, eu prefiro até que tu vá na frente."), 
+]
+
+def escrever(texto, cor):
+    for letra in texto:
+        sys.stdout.write(cor + letra)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    print()
+
+inicio = time.time()
+
+for i, (tempo, linha) in enumerate(letra):
+    while time.time() - inicio < tempo:
+        time.sleep(0.1)
+
+    cor = cores[i % len(cores)]
+    escrever(linha, cor)
+
+while pygame.mixer.music.get_busy():
+    time.sleep(1)
