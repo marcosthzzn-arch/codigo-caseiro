@@ -1,0 +1,7 @@
+import telebot
+                    
+bot = telebot.TeleBot('8699124736:AAH9_ifgqhDFWgbF5O1NbBiQOOqnupqZfcs')
+
+@bot.message_handler([ 'start', 'pagar']) #lista de funções disponiveis
+def start(msg:telebot.types.Message):
+    bot.reply_to(msg, 'Olá, precisa de ajuda?')
