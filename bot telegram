@@ -1,7 +1,22 @@
 import telebot
                     
-bot = telebot.TeleBot('8699124736:AAH9_ifgqhDFWgbF5O1NbBiQOOqnupqZfcs')
+bot = telebot.TeleBot('8772814091:AAGITqgWX9CfmyYq3EDiis_9pdt2SA75zoE')
 
-@bot.message_handler([ 'start', 'pagar']) #lista de funções disponiveis
+@bot.message_handler(['start', 'Start'])
 def start(msg:telebot.types.Message):
-    bot.reply_to(msg, 'Olá, precisa de ajuda?')
+    bot.reply_to(msg, 'Olá, use "/help" para verificar as funções')
+
+@bot.message_handler(['help', 'Help'])
+def help(msg:telebot.types.Message):
+    bot.reply_to(msg, 'funções dísponiveis:\n /comprar caso queira comprar algo pelo bot \n /help caso queira ver as funções \n /duvidas caso tenha alguma duvida sobre o bot')
+
+@bot.message_handler(['duvidas', 'Duvidas'])
+def duvidas(msg:telebot.types.Message):
+    bot.reply_to(msg, 'Esse bot foi feito para teste e aprender como fazer um bot 👍') 
+    
+@bot.message_handler(['comprar'])
+def comprar(msg:telebot.types.Message):
+    bot.reply_to(msg, 'em desenvolvimento 😒')             
+                 
+                                                                                                 
+bot.infinity_polling()
