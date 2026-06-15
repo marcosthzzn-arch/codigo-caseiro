@@ -1,0 +1,41 @@
+import time
+
+
+def zrs():
+    
+    seg = 00
+    min = 00
+    hr = 00
+
+    zerseg = 0
+    zermin = 0
+    zerhr = 0
+    
+    while True:
+        
+        time.sleep(1)
+        seg += 1
+        print(zerhr, hr, ":", zermin,min, ":", zerseg ,seg)
+      
+        
+        if seg == 9:
+            
+            seg -= 10
+            zerseg += 1
+        
+        elif zerseg == 6:
+                
+            zerseg -= 6
+            min += 1
+        
+        elif min == 9:
+            min -= 9
+            zermin += 1
+
+        elif zermin == 6:
+            zermin -= 6
+            hr += 1
+    
+zrs()
+    
+    
