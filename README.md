@@ -1,2 +1,2 @@
 # codigo-caseiro
-esotu apenas aprendendo python back-end
+estou apenas aprendendo python back-end
